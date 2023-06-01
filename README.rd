@@ -7,7 +7,7 @@ Input:
 - Atas_data.py modules (one for each brain atlas)
 
 Execution:
-- Atlas_creation.py modules (one for each brain atlas)
+- run Atlas_creation.py modules (one for each brain atlas)
 
 Output:
 - .jsonld atlas instances under /instances
