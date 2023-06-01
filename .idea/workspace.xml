@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73243dd5-8337-4d2f-a3f7-aeb8f9499299" name="Changes" comment="branch setup">
-      <change afterPath="$PROJECT_DIR$/helper_code/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.rd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/brainAtlas-representation/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/dark_openMINDS-SANDS-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/dark_openMINDS-SANDS-logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/light_openMINDS-SANDS-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/light_openMINDS-SANDS-logo.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +39,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2QYWoHj4lwAz5JvQv3B9LafspWt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
