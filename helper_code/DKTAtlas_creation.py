@@ -2,7 +2,7 @@ import os.path
 import glob
 import openMINDS.version_manager
 import json
-import DKT_data_structures
+import DKTAtlas_data
 
 
 def generate_orcids(path, *args):
@@ -492,7 +492,7 @@ if __name__ == '__main__':
 
     # get DKT Data
     DKT_authors, full_documentation, main_documentation, description, abbreviation, fullName, \
-        shortName, homepage, versions, areas_versions_hierachry, areas_unique, parents_unique = DKT_data_structures.data_structures()
+        shortName, homepage, versions, areas_versions_hierachry, areas_unique, parents_unique = DKTAtlas_data.data_structures()
     # helper vars
     j = ".jsonld"
     p = "./instances/PythonLibrary/"
