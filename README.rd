@@ -16,3 +16,6 @@ Dependencies:
 - tested on Python 3.8
 - openMINDS Python Library (https://github.com/HumanBrainProject/openMINDS_generator)
 
+The main repository with individual atlas branches can be found here:
+https://github.com/kaikiwitz/openMINDS_SANDS
+The dev-branch is mirrored on GitLab
