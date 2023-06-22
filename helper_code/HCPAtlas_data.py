@@ -1,10 +1,15 @@
+from pandasImport import data
 
 def data_structures():
+    # load data from web
+
+
     # Brain Area Info for each version (can be the same) THIS NEEDS TO BE SAME LENGTH FOR ALL AREAS
+    areas_children = data()
     areas_children = ['caudalAnteriorCingulate', 'caudalMiddleFrontal', 'cuneus', 'entorhinal', 'fusiform',
                       'inferiorParietal', 'inferiorTemporal', 'isthmusCingulate', 'lateralOccipital',
                       'lateralOrbitofrontal', 'lingual', 'medialOrbitofrontal', 'middleTemporal', 'parahippocampal',
-                      'paracentral', 'parsOpercularis', 'parsOrbitalis', 'parsTriangularis', 'pericalcarine',
+                      'paracentra', 'parsOpercularis', 'parsOrbitalis', 'parsTriangularis', 'pericalcarine',
                       'postcentral', 'posteriorCingulate', 'precentral', 'precuneus', 'rostralAnteriorCingulate',
                       'rostralMiddleFrontal', 'superiorFrontal', 'superiorParietal', 'superiorTemporal',
                       'supramarginal', 'transverseTemporal', 'insula']
