@@ -149,10 +149,10 @@ def data_structures():
         for tuple_value in value_list:
             parents_unique.update(tuple_value[1:])
 
-    return (mars_authors_unique, full_documentation, main_documentation, description, abbreviation, fullName,
+    return (mars_authors_unique, main_documentation, description, abbreviation, fullName,
             shortName, homepage, versions, areas_versions_hierachry, areas_unique, parents_unique)
 
 
 if __name__ == '__main__':
-    mars_authors_unique, full_documentation, main_documentation, description, abbreviation, fullName, shortName, \
+    mars_authors_unique, main_documentation, description, abbreviation, fullName, shortName, \
         homepage, versions, areas_versions_hierachry, areas_unique, parents_unique = data_structures()

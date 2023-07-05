@@ -2,10 +2,9 @@ import os.path
 import glob
 import openMINDS.version_manager
 import json
-import Mars_data_structures
 
 
-class Atlas:
+class AtlasGen:
 
     # class variables used for json Instances
     has_entity_listofdic = []
@@ -27,7 +26,7 @@ class Atlas:
         self.path = atlas_dir
         self.authors = authors
         self.versions = versions
-        self.decription = description
+        self.description = description
         self.shortname = shortname
         self.fullname = fullname
         self.homepage = homepage
@@ -46,18 +45,19 @@ class Atlas:
                     cls.author_listofdic.append(author_dic)
 
     @classmethod
-    def entity_gen(cls, abb, areas):
-        for set in areas:
+    def entity_gen(cls, instance):
+        for set in instance.areas:
             for area in set:
                 if area is not None:
-                    entity_dic = {"@id": f"{cls.entity_https}{abb}_{area}"}
+                    entity_dic = {"@id": f"{cls.entity_https}{instance.abbreviation}_{area}"}
                     cls.has_entity_listofdic.append(entity_dic)
         return cls.has_entity_listofdic
 
     @classmethod
     def terminology_gen(cls, instance):
+
         has_terminology_dic = {"@type": "https://openminds.ebrains.eu/sands/ParcellationTerminology", "definedIn": None,
-                               "hasEntity": cls.entity_gen(instance.abbreviation, instance.areas)}
+                               "hasEntity": cls.entity_gen(instance)}
         cls.has_terminology_listofdic = has_terminology_dic
 
     @classmethod
@@ -77,7 +77,7 @@ class Atlas:
                                                hasVersion=cls.has_version_listofdic)
         # adding additional info
         cls.basic.get(atlas).digitalIdentifier = [{"@id": f"{instance.documentation}"}]
-        cls.basic.get(atlas).homepage = instance.hompage
+        cls.basic.get(atlas).homepage = instance.homepage
         # custodian
         cls.basic.get(atlas).custodian = [{"@id": "https://openminds.ebrains.eu/instances/person/kleinArno"}]
         # saving in class-specific path
