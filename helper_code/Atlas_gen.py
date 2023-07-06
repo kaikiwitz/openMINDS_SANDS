@@ -12,6 +12,8 @@ authors, documentation, description, abbreviation, fullname, shortname, \
 j = ".jsonld"
 atlas_dir = f"/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/atlas/brainAtlas/{fullname}{j}"
 version_dir = "/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/atlas/brainAtlasVersion/"
+entity_dir = f"/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/atlas/parcellationEntity/{abbreviation}/"
+os.mkdir(entity_dir)
 
 # create the Atlas Instance and call all Atlas methods
 Mars = AtlasGen(atlas_dir, authors, versions, description, shortname, fullname, homepage, documentation, abbreviation,
@@ -26,6 +28,7 @@ for dic in versions:
         AtlasVersionGen.generate_instances(MarsVersion)
         AtlasVersionGen.generate_openminds_instances(MarsVersion)
 
+# entitties
 
 
 
