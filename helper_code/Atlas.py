@@ -70,6 +70,10 @@ class AtlasGen:
     @classmethod
     def generate_instances(cls, instance):
         # generate atlas with necessary information
+        cls.author_gen(instance)
+        cls.terminology_gen(instance)
+        cls.version_gen(instance)
+
         atlas = cls.basic.add_SANDS_brainAtlas(description=instance.description, shortName=instance.shortname,
                                                fullName=instance.fullname,
                                                author=cls.author_listofdic,
