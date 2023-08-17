@@ -60,27 +60,32 @@ class ParcellationEntityGen:
             has_parent_listOfdic.append(has_parent_dic)
         return has_parent_listOfdic
 
-
-    def entity_instance_generation(cls, instance):
-        for area in areas_unique
+    @classmethod
+    def generate_instances(cls, instance):
+        for area in instance.areas
             versions = cls.version_extraction_PE(area, instance.hierarchy)
             parents = cls.parent_extraction_PE(area, instance)
 
             # create entity isntance
             entity = cls.basic.add_SANDS_parcellationEntity(name=area)
             cls.basic.get(entity).lookupLabel = f"{instance.abb}_{area}"
+            # add entity version creation
+            cls.basic.get(entity).hasVersion = versions
+            # add parent structures
+            cls.basic.get(entity).hasParent = parents
+            cls.basic.save("./instances/PythonLibrary/")
 
+def generate_openminds_instances(instance):
 
-        # add entity version creation
-
-
-        basic.get(entity).hasVersion = has_version_listOfdic
-
-        # add parent structures
-
-        basic.get(entity).hasParent = has_parent_listOfdic
-        basic.save(p)
-
-
-
-
+# copy contents of created file
+        latest = max(glob.glob(f"{p}parcellationEntity/*jsonld"))
+        with open(latest, 'r') as f:
+            data = json.load(f)
+            data = replace_empty_lists(data)
+            entity_name = os.path.basename(entity_path).replace(j, "")
+            data["@id"] = f"https://openminds.ebrains.eu/instances/parcellationEntity/{entity_name}"
+        # write content to new file
+        json_target = open(entity_path, "w")
+        json.dump(data, json_target, indent=2, sort_keys=True)
+        json_target.write("\n")
+        json_target.close()

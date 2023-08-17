@@ -21,15 +21,15 @@ Mars = AtlasGen(atlas_dir, authors, versions, description, shortname, fullname, 
 AtlasGen.generate_instances(Mars)
 AtlasGen.generate_openminds_instances(Mars)
 
-# create atlas versions and call altlas versions methods
+# create Atlas Versions and call altlas versions methods
 for dic in versions:
     for version in dic.keys():
         MarsVersion = AtlasVersionGen(version_dir, version, dic, areas_versions_hierachry)
         AtlasVersionGen.generate_instances(MarsVersion)
         AtlasVersionGen.generate_openminds_instances(MarsVersion)
 
-# entitties
-
+# create Atlas Parcellation Instances
+# call them in a loop
 
 
 
