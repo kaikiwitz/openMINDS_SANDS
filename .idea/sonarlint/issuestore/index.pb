@@ -13,5 +13,3 @@ S
 -.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e
 U
 %instances/atlas/brainAtlas/DKA.jsonld,8/4/84796173248a5aaedcd170551117dec1432fe436
-y
-Iinstances/atlas/parcellationEntity/DKA/DKA_anteriorCingulateCortex.jsonld,b/7/b7c43e56c839ec1593e8b3acb9939dfc1c8bd3a9

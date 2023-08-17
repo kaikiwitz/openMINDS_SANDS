@@ -81,9 +81,9 @@ class ParcellationEntityGen:
         with open(latest, 'r') as f:
             data = json.load(f)
             data = replace_empty_lists(data)
-            data["@id"] = f"https://openminds.ebrains.eu/instances/parcellationEntity/{area}"
+            data["@id"] = f"https://openminds.ebrains.eu/instances/parcellationEntity/{instance.abb}_{area}"
         # write content to new file
-        json_target = open(f"{instance.path}{area}.jsonld", "w")
+        json_target = open(f"{instance.path}{instance.abb}_{area}.jsonld", "w")
         json.dump(data, json_target, indent=2, sort_keys=True)
         json_target.write("\n")
         json_target.close()
