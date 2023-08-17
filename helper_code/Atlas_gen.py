@@ -1,7 +1,8 @@
+import os.path
 import Mars_data_structures
 from Atlas import AtlasGen
 from AtlasVersion import AtlasVersionGen
-
+from ParcellationEntity import ParcellationEntityGen
 # get the Mars Atlas data
 authors, documentation, description, abbreviation, fullname, shortname, \
     homepage, versions, areas_versions_hierachry, areas_unique, parents_unique = Mars_data_structures.data_structures()
@@ -29,8 +30,6 @@ for dic in versions:
         AtlasVersionGen.generate_openminds_instances(MarsVersion)
 
 # create Atlas Parcellation Instances
-# call them in a loop
-
-
-
+Parcellation_Entitites = ParcellationEntityGen(entity_dir, abbreviation, areas_versions_hierachry,areas_unique, parents_unique )
+ParcellationEntityGen.generate_instances(Parcellation_Entitites)
 

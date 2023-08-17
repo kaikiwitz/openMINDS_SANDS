@@ -1,7 +1,8 @@
-import os.path
+
 import glob
 import openMINDS.version_manager
 import json
+from MarsAtlas_generation import replace_empty_lists
 
 
 class ParcellationEntityGen:
@@ -23,23 +24,20 @@ class ParcellationEntityGen:
         self.areas = areas_unique
         self.parents = parents_unique
 
-
-
     @classmethod
     def version_extraction_PE(cls, area, hierarchy, parent_versions=True):
         entity_version_list = []
         has_version_listOfdic = []
         # check whether they are part of a specific version, add version
         for version, areas_version in hierarchy.items():
-            if any(area in tuple for tuple in areas_version):
-                if parent_versions:
-                    entity_version_list.append(version)
+            if any(area in tuple for tuple in areas_version) & parent_versions:
+                # if parent_versions:
+                entity_version_list.append(version)
         if entity_version_list:
             for version in entity_version_list:
                 has_version_dic = {"@id": f"{cls.entity_version_https}{version}_{area}"}
                 has_version_listOfdic.append(has_version_dic)
         return has_version_listOfdic
-
 
 
     @classmethod
@@ -62,7 +60,7 @@ class ParcellationEntityGen:
 
     @classmethod
     def generate_instances(cls, instance):
-        for area in instance.areas
+        for area in instance.areas:
             versions = cls.version_extraction_PE(area, instance.hierarchy)
             parents = cls.parent_extraction_PE(area, instance)
 
@@ -74,18 +72,18 @@ class ParcellationEntityGen:
             # add parent structures
             cls.basic.get(entity).hasParent = parents
             cls.basic.save("./instances/PythonLibrary/")
+            # create openMINDS instances
+            cls.generate_openminds_instances(instance, area)
 
-def generate_openminds_instances(instance):
-
-# copy contents of created file
-        latest = max(glob.glob(f"{p}parcellationEntity/*jsonld"))
+    @staticmethod
+    def generate_openminds_instances(instance, area):
+        latest = max(glob.glob("./instances/PythonLibrary/parcellationEntity/*jsonld"))
         with open(latest, 'r') as f:
             data = json.load(f)
             data = replace_empty_lists(data)
-            entity_name = os.path.basename(entity_path).replace(j, "")
-            data["@id"] = f"https://openminds.ebrains.eu/instances/parcellationEntity/{entity_name}"
+            data["@id"] = f"https://openminds.ebrains.eu/instances/parcellationEntity/{area}"
         # write content to new file
-        json_target = open(entity_path, "w")
+        json_target = open(f"{instance.path}{area}.jsonld", "w")
         json.dump(data, json_target, indent=2, sort_keys=True)
         json_target.write("\n")
         json_target.close()
