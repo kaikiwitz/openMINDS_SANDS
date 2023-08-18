@@ -21,3 +21,17 @@ V
 &instances/atlas/brainAtlas/SWMA.jsonld,f/c/fcc2352458777066a7728d7e45f567cdab8f7807
 V
 &instances/atlas/brainAtlas/DWMA.jsonld,0/9/092d53df109de3c11804ecfa97a0e0b1db167c28
+[
++instances/atlas/brainAtlas/AsegAtlas.jsonld,b/9/b90bf019d3779b842bdfed1a7ff58ca0cb0d7073
+S
+#helper_code/Mars_data_structures.py,9/e/9ece1fc34a814bf6f544d0be6f1b14e961e29a1d
+S
+#helper_code/MarsAtlas_generation.py,f/e/fecb549bd21c84fecea3bc2e74c2e612b834db14
+Q
+!helper_code/ParcellationEntity.py,5/d/5d5e3cbcb0ece415b4e18020ca6c12ac72b92b71
+K
+helper_code/AtlasVersion.py,7/e/7e254aed4cfa86166c228aa5a5d64744ccff223a
+X
+(helper_code/ParcellationEntityVersion.py,1/0/10f85854d1cd379929c0036fe9d257a4d4372f01
+_
+/instances/atlas/brainAtlas/Schaefer-400p.jsonld,e/f/ef248787bcef46ea2f032bd22fe7a93287ede696
