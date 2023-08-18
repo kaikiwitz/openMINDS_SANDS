@@ -1,7 +1,7 @@
 import glob
 import openMINDS.version_manager
 import json
-from MarsAtlas_generation import replace_empty_lists
+from class_utils import replace_empty_lists
 
 
 class AtlasVersionGen:
