@@ -1,9 +1,11 @@
 import os.path
 import Mars_data_structures
+# from class_utils import initialize_and_call
 from Atlas import AtlasGen
 from AtlasVersion import AtlasVersionGen
 from ParcellationEntity import ParcellationEntityGen
 from ParcellationEntityVersion import ParcellationEntityVersionGen
+
 # get Mars Atlas data
 authors, documentation, description, abbreviation, fullname, shortname, \
     homepage, versions, areas_versions_hierachry, areas_unique, parents_unique = Mars_data_structures.data_structures()
@@ -15,32 +17,30 @@ version_dir = "/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/atlas/bra
 entity_dir = f"/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/atlas/parcellationEntity/{abbreviation}/"
 os.mkdir(entity_dir)
 entity_ver_dir = "/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/atlas/parcellationEntityVersion/"
+
+
+# create the Atlas
+Mars = AtlasGen(atlas_dir, authors, versions, description, shortname, fullname, homepage, documentation, abbreviation,
+             areas_unique, parents_unique)
+AtlasGen.generate_instances(Mars)
+AtlasGen.generate_openminds_instances(Mars)
+
+# create Atlas Versions
 for dic in versions:
     for version in dic.keys():
-        os.mkdir(f"{entity_ver_dir}{version}/")
+        MarsVersion = AtlasVersionGen(version_dir, version, dic, areas_versions_hierachry)
+        AtlasVersionGen.generate_instances(MarsVersion)
+        AtlasVersionGen.generate_openminds_instances(MarsVersion)
 
-#
-# # create the Atlas
-# Mars = AtlasGen(atlas_dir, authors, versions, description, shortname, fullname, homepage, documentation, abbreviation,
-#              areas_unique, parents_unique)
-# AtlasGen.generate_instances(Mars)
-# AtlasGen.generate_openminds_instances(Mars)
-#
-# # create Atlas Versions
-# for dic in versions:
-#     for version in dic.keys():
-#         MarsVersion = AtlasVersionGen(version_dir, version, dic, areas_versions_hierachry)
-#         AtlasVersionGen.generate_instances(MarsVersion)
-#         AtlasVersionGen.generate_openminds_instances(MarsVersion)
-#
-# # create Atlas Parcellations
-# Parcellation_Entitites = ParcellationEntityGen(entity_dir, abbreviation, areas_versions_hierachry,areas_unique, parents_unique)
-# ParcellationEntityGen.generate_instances(Parcellation_Entitites)
+# create Atlas Parcellations
+Parcellation_Entitites = ParcellationEntityGen(entity_dir, abbreviation, areas_versions_hierachry,areas_unique, parents_unique)
+ParcellationEntityGen.generate_instances(Parcellation_Entitites)
 
 # create Atlas Parcellation Versions
-# WE SHOULD LOOP OVER THE PARCELLATION VERSION INFO JUST LIKE WE DID FOR THE ATLAS VERSIONS, DEFINE INSTANCE VARIABLES ACCORDINGLY, WAY EASIER
 for dic in versions:
     for version in dic.keys():
-        ParcellationEntityVersions = ParcellationEntityVersionGen(entity_ver_dir, version, dic, areas_versions_hierachry, abbreviation, versions)
+        ver_dir = f"{entity_ver_dir}{version}/"
+        os.mkdir(ver_dir)
+        ParcellationEntityVersions = ParcellationEntityVersionGen(ver_dir, version, dic, areas_versions_hierachry, abbreviation, versions)
         ParcellationEntityVersionGen.generate_instances(ParcellationEntityVersions)
 

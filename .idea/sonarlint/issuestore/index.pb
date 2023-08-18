@@ -19,3 +19,11 @@ y
 Iinstances/atlas/parcellationEntity/DKA/DKA_anteriorCingulateCortex.jsonld,b/7/b7c43e56c839ec1593e8b3acb9939dfc1c8bd3a9
 q
 Ainstances/atlas/parcellationEntity/DKA/DKA_cingulateCortex.jsonld,a/c/ac1174673f0b4334493015e2044b36117e064504
+D
+helper_code/Atlas.py,6/5/65eaedd41f88542f612845b885107851ff7ec859
+K
+helper_code/AtlasVersion.py,7/e/7e254aed4cfa86166c228aa5a5d64744ccff223a
+V
+&instances/atlas/brainAtlas/SWMA.jsonld,f/c/fcc2352458777066a7728d7e45f567cdab8f7807
+V
+&instances/atlas/brainAtlas/DWMA.jsonld,0/9/092d53df109de3c11804ecfa97a0e0b1db167c28
