@@ -1,6 +1,5 @@
 import os.path
 import Mars_data_structures
-# from class_utils import initialize_and_call
 from Atlas import AtlasGen
 from AtlasVersion import AtlasVersionGen
 from ParcellationEntity import ParcellationEntityGen
@@ -19,7 +18,6 @@ os.mkdir(entity_dir)
 entity_ver_dir = "/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/atlas/parcellationEntityVersion/"
 
 
-# create the Atlas
 Mars = AtlasGen(atlas_dir, authors, versions, description, shortname, fullname, homepage, documentation, abbreviation,
              areas_unique, parents_unique)
 AtlasGen.generate_instances(Mars)

@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56f4f992-f492-4202-9599-d35442bfa253" name="Changes" comment="introducing classes and class methods">
-      <change afterPath="$PROJECT_DIR$/helper_code/class_utils.py" afterDir="false" />
+    <list default="true" id="56f4f992-f492-4202-9599-d35442bfa253" name="Changes" comment="Classes finished">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helper_code/Atlas_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/Atlas_gen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper_code/ParcellationEntityVersion.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/ParcellationEntityVersion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper_code/class_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/class_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692363955429</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Classes finished">
+      <created>1692370744005</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1692370744005</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -160,6 +166,7 @@
     <MESSAGE value="DKT_test brnach setup commit" />
     <MESSAGE value="branch setup" />
     <MESSAGE value="introducing classes and class methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="introducing classes and class methods" />
+    <MESSAGE value="Classes finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Classes finished" />
   </component>
 </project>

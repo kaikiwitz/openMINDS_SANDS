@@ -1,4 +1,3 @@
-import os.path
 import glob
 import openMINDS.version_manager
 import json
@@ -50,7 +49,8 @@ class ParcellationEntityVersionGen:
         for quality in criteriaQualityType:
             for criteria in annotationCriteriaType:
                 for lat in laterality:
-                    annotation = cls.addon.add_SANDS_atlasAnnotation(criteriaQualityType=quality, criteriaType=criteria,
+                    annotation = cls.addon.add_SANDS_atlasAnnotation(criteriaQualityType=quality,
+                                                                     criteriaType=criteria,
                                                                      type=type)
                     cls.addon.get(annotation).laterality = lat
                     cls.addon.save("./instances/PythonLibrary/")
@@ -78,11 +78,15 @@ class ParcellationEntityVersionGen:
             area = area_tuple[0]
             parent = area_tuple[1]
             # intiliaize instance
-            entity_version = cls.basic.add_SANDS_parcellationEntityVersion(name=area, versionIdentifier=instance.version_identifier)
+            entity_version = cls.basic.add_SANDS_parcellationEntityVersion(name=area,
+                                                                           versionIdentifier=instance.version_identifier)
             cls.basic.get(entity_version).lookupLabel = f"{instance.version}_{area}"
             # add info
             cls.parent_dic(instance.abb, parent)
-            cls.get_annotation(instance.annotationCriteriaType, instance.criteriaQualityType, instance.laterality, instance.type)
+            cls.get_annotation(instance.annotationCriteriaType,
+                               instance.criteriaQualityType,
+                               instance.laterality,
+                               instance.type)
             cls.basic.get(entity_version).hasParent = cls.has_parent_listOfdic
             cls.basic.get(entity_version).hasAnnotation = cls.has_annotation_listOfdic
             # save instance

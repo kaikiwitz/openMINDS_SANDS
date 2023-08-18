@@ -1,9 +1,7 @@
-def initialize_and_call(class_type, method_name, *args, **kwargs):
-    instance = class_type(*args, **kwargs)
-    method = getattr(instance, method_name)
-    method()
+class AutoInitializeAndCall:
+    def __init__(self, class_type, *args, **kwargs):
+        self.instance = class_type(*args, **kwargs)
 
-def initialize_and_call_loop(class_type, method_name, *args, **kwargs):
-    instance = class_type(*args, **kwargs)
-    method = getattr(instance, method_name)
-    method()
+    def call_methods(self, *methods):
+        for method in methods:
+            method()

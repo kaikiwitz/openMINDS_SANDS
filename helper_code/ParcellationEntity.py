@@ -1,4 +1,3 @@
-
 import glob
 import openMINDS.version_manager
 import json
@@ -8,7 +7,6 @@ from MarsAtlas_generation import replace_empty_lists
 class ParcellationEntityGen:
 
     # class variables used for json Instances
-
     parent_https = "https://openminds.ebrains.eu/instances/parcellationEntity/"
     entity_version_https = "https://openminds.ebrains.eu/instances/parcellationEntityVersion/"
     # intialize openMinds instance creator
@@ -38,7 +36,6 @@ class ParcellationEntityGen:
                 has_version_dic = {"@id": f"{cls.entity_version_https}{version}_{area}"}
                 has_version_listOfdic.append(has_version_dic)
         return has_version_listOfdic
-
 
     @classmethod
     def parent_extraction_PE(cls, area, instance):
