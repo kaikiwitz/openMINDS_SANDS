@@ -1,10 +1,17 @@
-class AutoInitializeAndCall:
-    def __init__(self, class_type, *args, **kwargs):
-        self.instance = class_type(*args, **kwargs)
+# class_utils.py
 
-    def call_methods(self, *methods):
-        for method in methods:
-            method()
+class AutoInitializeAndCall:
+    def __init__(self, instance_or_class, *args, **kwargs):
+        if isinstance(instance_or_class, type):
+            self.instance = instance_or_class(*args, **kwargs)
+        else:
+            self.instance = instance_or_class
+
+    def call_methods(self, *methods_and_args):
+        for method_and_arg in methods_and_args:
+            method, arg = method_and_arg
+            method(arg)  # Call the method
+
 
 def replace_empty_lists(obj):
     if isinstance(obj, list) and not obj:
