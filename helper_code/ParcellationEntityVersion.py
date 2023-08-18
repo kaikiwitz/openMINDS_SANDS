@@ -88,19 +88,19 @@ class ParcellationEntityVersionGen:
 
             # save instance
             cls.basic.save("./instances/PythonLibrary/")
-            cls.generate_openminds_instances(instance, area)
+            cls.generate_openminds_instances(instance.path, instance.version, area)
 
     @classmethod
-    def generate_openminds_instances(instance, area):
+    def generate_openminds_instances(path, version, area):
         # copy contents of saved instance
         latest = max(glob.glob("./instances/PythonLibrary/parcellationEntityVersion/*jsonld"))
         with open(latest, 'r') as f:
             data = json.load(f)
             data = replace_empty_lists(data)
-            entity_ver_name = os.path.basename(instance.path).replace(".jsonld", "")
+            entity_ver_name = os.path.basename(path).replace(".jsonld", "")
             data["@id"] = f"https://openminds.ebrains.eu/instances/parcellationEntityVersion/{entity_ver_name}"
         # write content to new file
-        json_target = open(f"{instance.path}{instance.version}{instance.version}{area}.jsonld", "w")
+        json_target = open(f"{path}{version}{version}{area}.jsonld", "w")
         json.dump(data, json_target, indent=2, sort_keys=True)
         json_target.write("\n")
         json_target.close()
