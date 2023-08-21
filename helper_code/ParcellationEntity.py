@@ -72,7 +72,6 @@ class ParcellationEntityGen:
             # create openMINDS instances
             cls.generate_openminds_instances(instance, area)
 
-    @staticmethod
     def generate_openminds_instances(instance, area):
         latest = max(glob.glob("./instances/PythonLibrary/parcellationEntity/*jsonld"))
         with open(latest, 'r') as f:

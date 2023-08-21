@@ -13,11 +13,6 @@ class AtlasVersionGen:
     parcellation_entity_version_https = "https://openminds.ebrains.eu/instances/parcellationEntityVersion/"
     license_https = "https://openminds.ebrains.eu/instances/licenses/"
     version_https = "https://openminds.ebrains.eu/instances/brainAtlasVersion/"
-    authors_list_of_dic = []
-    has_entity_listofdic = []
-    altVersion_list_of_dic = []
-    newVersion_list_of_dic = []
-    docu_list_of_dic = []
 
     # intialize openMinds instance creator
     openMINDS.version_manager.init()
@@ -43,6 +38,11 @@ class AtlasVersionGen:
         self.newVersions = version_info.get(version).get("newVersion")
         self.homepage = version_info.get(version).get("homepage")
         self.type = version_info.get(version).get('atlasType')
+        self.authors_list_of_dic = []
+        self.has_entity_listofdic = []
+        self.altVersion_list_of_dic = []
+        self.newVersion_list_of_dic = []
+        self.docu_list_of_dic = []
 
     @classmethod
     def getLicense(cls, instance):
@@ -63,7 +63,7 @@ class AtlasVersionGen:
     def authors_version(cls, instance):
         for author in instance.authors:
             author_dic = {"@id": f"{cls.author_https}{author}"}
-            cls.authors_list_of_dic.append(author_dic)
+            instance.authors_list_of_dic.append(author_dic)
 
     @classmethod
     def terminology_versions(cls, instance):
@@ -73,9 +73,9 @@ class AtlasVersionGen:
         version_entities = (t[0] for t in instance.areas[instance.version])
         for area in version_entities:
             entity_version_dic = {"@id": f"{cls.parcellation_entity_version_https}{instance.version}_{area}"}
-            cls.has_entity_listofdic.append(entity_version_dic)
+            instance.has_entity_listofdic.append(entity_version_dic)
         terminology_dic = {"@type": "https://openminds.ebrains.eu/sands/ParcellationTerminologyVersion",
-                           "definedIn": None, "hasEntity": cls.has_entity_listofdic}
+                           "definedIn": None, "hasEntity": instance.has_entity_listofdic}
         return terminology_dic
 
     @classmethod
@@ -83,19 +83,19 @@ class AtlasVersionGen:
         if instance.altVersions is not None:
             for altVersion in instance.altVersions:
                 altVersion_dic = {"@id": f"{cls.version_https}{altVersion}"}
-                cls.altVersion_list_of_dic.append(altVersion_dic)
+                instance.altVersion_list_of_dic.append(altVersion_dic)
 
     @classmethod
     def newerVersion(cls, instance):
         if instance.newVersions is not None:
             for newVersion in instance.newVersions:
                 newVersion_dic = {"@id": f"{cls.version_https}{newVersion}"}
-                cls.newVersion_list_of_dic.append(newVersion_dic)
+                instance.newVersion_list_of_dic.append(newVersion_dic)
 
     @classmethod
     def docugen(cls, instance):
         docu = {"@id": f"{instance.DOI}"}
-        cls.docu_list_of_dic.append(docu)
+        instance.docu_list_of_dic.append(docu)
 
     @classmethod
     def generate_instances(cls, instance):
@@ -107,30 +107,30 @@ class AtlasVersionGen:
                                                               coordinateSpace=cls.getCoordinateSpace(instance),
                                                               accessibility=cls.getAccessibility(instance),
                                                               hasTerminology=cls.terminology_versions(instance),
-                                                              fullDocumentation=cls.docu_list_of_dic,
+                                                              fullDocumentation=instance.docu_list_of_dic,
                                                               versionInnovation=instance.version_innovation,
                                                               versionIdentifier=instance.version_identifier,
                                                               releaseDate=instance.release_date,
                                                               shortName=instance.short_name)
 
-        cls.basic.get(atlas_version).isAlternativeVersionOf = cls.altVersion_list_of_dic
-        cls.basic.get(atlas_version).isNewVersionOf = cls.newVersion_list_of_dic
-        cls.basic.get(atlas_version).author = cls.authors_list_of_dic
+        cls.basic.get(atlas_version).isAlternativeVersionOf = instance.altVersion_list_of_dic
+        cls.basic.get(atlas_version).isNewVersionOf = instance.newVersion_list_of_dic
+        cls.basic.get(atlas_version).author = instance.authors_list_of_dic
         cls.basic.get(atlas_version).homepage = instance.homepage
         cls.basic.get(atlas_version).type = {"@id": f"https://openminds.ebrains.eu/instances/atlasType/"
                                                     f"{instance.type}"}
         cls.basic.save("./instances/PythonLibrary/")
+        cls.generate_openminds_instances(instance)
 
-    @staticmethod
-    def generate_openminds_instances(instance):
+    def generate_openminds_instances(self):
         # copy contents of created file
         latest = max(glob.glob("./instances/PythonLibrary/brainAtlasVersion/*jsonld"))
         with open(latest, 'r') as f:
             data = json.load(f)
             data = replace_empty_lists(data)
-            data["@id"] = f"https://openminds.ebrains.eu/instances/brainAtlasVersion/{instance.version}"
+            data["@id"] = f"https://openminds.ebrains.eu/instances/brainAtlasVersion/{self.version}"
         # write content to new file
-        json_target = open(f"{instance.path}{instance.version}.jsonld", "w")
+        json_target = open(f"{self.path}{self.version}.jsonld", "w")
         json.dump(data, json_target, indent=2, sort_keys=True)
         json_target.write("\n")
         json_target.close()

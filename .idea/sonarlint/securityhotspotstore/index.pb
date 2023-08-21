@@ -1,8 +1,6 @@
 
 ^
 .helper_code/MarsAtlas_generation_methods.pa.py,9/5/9523971a33d1e148a506881ffb74e870c2097bc9
-h
-8instances/atlas/brainAtlasVersion/AMBA_CCFv3-2015.jsonld,6/b/6bc09eb00b4fbd3ad61774c177d0d2b8c2825123
 S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
 ]
@@ -21,9 +19,5 @@ V
 &instances/atlas/brainAtlas/DWMA.jsonld,0/9/092d53df109de3c11804ecfa97a0e0b1db167c28
 [
 +instances/atlas/brainAtlas/AsegAtlas.jsonld,b/9/b90bf019d3779b842bdfed1a7ff58ca0cb0d7073
-Q
-!helper_code/ParcellationEntity.py,5/d/5d5e3cbcb0ece415b4e18020ca6c12ac72b92b71
-X
-(helper_code/ParcellationEntityVersion.py,1/0/10f85854d1cd379929c0036fe9d257a4d4372f01
 _
 /instances/atlas/brainAtlas/Schaefer-400p.jsonld,e/f/ef248787bcef46ea2f032bd22fe7a93287ede696

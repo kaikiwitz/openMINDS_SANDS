@@ -7,10 +7,6 @@ import json
 class AtlasGen:
 
     # class variables used for json Instances
-    has_entity_listofdic = []
-    has_terminology_listofdic = []
-    author_listofdic = []
-    has_version_listofdic = []
     version_https = "https://openminds.ebrains.eu/instances/brainAtlasVersion/"
     entity_https = "https://openminds.ebrains.eu/instances/parcellationEntity/"
     person_https = "https://openminds.ebrains.eu/instances/person/"
@@ -33,6 +29,10 @@ class AtlasGen:
         self.documentation = documentation
         self.abbreviation = abbreviation
         self.areas = areas
+        self.has_entity_listofdic = []
+        self.has_terminology_listofdic = []
+        self.author_listofdic = []
+        self.has_version_listofdic = []
 
     @classmethod
     def author_gen(cls, instance):
@@ -42,7 +42,7 @@ class AtlasGen:
                     continue
                 else:
                     author_dic = {"@id": f"{cls.person_https}{name}"}
-                    cls.author_listofdic.append(author_dic)
+                    instance.author_listofdic.append(author_dic)
 
     @classmethod
     def entity_gen(cls, instance):
@@ -50,22 +50,22 @@ class AtlasGen:
             for area in set:
                 if area is not None:
                     entity_dic = {"@id": f"{cls.entity_https}{instance.abbreviation}_{area}"}
-                    cls.has_entity_listofdic.append(entity_dic)
-        return cls.has_entity_listofdic
+                    instance.has_entity_listofdic.append(entity_dic)
+        return instance.has_entity_listofdic
 
     @classmethod
     def terminology_gen(cls, instance):
 
         has_terminology_dic = {"@type": "https://openminds.ebrains.eu/sands/ParcellationTerminology", "definedIn": None,
                                "hasEntity": cls.entity_gen(instance)}
-        cls.has_terminology_listofdic = has_terminology_dic
+        instance.has_terminology_listofdic = has_terminology_dic
 
     @classmethod
     def version_gen(cls, instance):
         for dic in instance.versions:
             for version in dic.keys():
                 has_version_dic = {"@id": f"{cls.version_https}{version}"}
-                cls.has_version_listofdic.append(has_version_dic)
+                instance.has_version_listofdic.append(has_version_dic)
 
     @classmethod
     def generate_instances(cls, instance):
@@ -76,9 +76,9 @@ class AtlasGen:
 
         atlas = cls.basic.add_SANDS_brainAtlas(description=instance.description, shortName=instance.shortname,
                                                fullName=instance.fullname,
-                                               author=cls.author_listofdic,
-                                               hasTerminology=cls.has_terminology_listofdic,
-                                               hasVersion=cls.has_version_listofdic)
+                                               author=instance.author_listofdic,
+                                               hasTerminology=instance.has_terminology_listofdic,
+                                               hasVersion=instance.has_version_listofdic)
         # adding additional info
         cls.basic.get(atlas).digitalIdentifier = [{"@id": f"{instance.documentation}"}]
         cls.basic.get(atlas).homepage = instance.homepage
@@ -86,18 +86,18 @@ class AtlasGen:
         cls.basic.get(atlas).custodian = [{"@id": "https://openminds.ebrains.eu/instances/person/kleinArno"}]
         # saving in class-specific path
         cls.basic.save("./instances/PythonLibrary/")
+        cls.generate_openminds_instances(instance)
 
-    @staticmethod
-    def generate_openminds_instances(instance):
+    def generate_openminds_instances(self):
         # copy contents
         latest = max(glob.glob("./instances/PythonLibrary/brainAtlas/*jsonld"))
         with open(latest, 'r') as f:
             data = json.load(f)
-            atlas_name = os.path.basename(instance.path).replace(".jsonld", "")
+            atlas_name = os.path.basename(self.path).replace(".jsonld", "")
             data["@id"] = f"https://openminds.ebrains.eu/instances/brainAtlas/{atlas_name}"
             f.close()
         # write content to new file
-        json_target = open(instance.path, "w")
+        json_target = open(self.path, "w")
         json.dump(data, json_target, indent=2, sort_keys=True)
         json_target.write("\n")
         json_target.close()

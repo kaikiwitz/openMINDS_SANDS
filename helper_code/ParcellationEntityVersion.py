@@ -93,7 +93,6 @@ class ParcellationEntityVersionGen:
             cls.basic.save("./instances/PythonLibrary/")
             cls.generate_openminds_instances(instance, area)
 
-    @staticmethod
     def generate_openminds_instances(instance, area):
         # copy contents of saved instance
         latest = max(glob.glob("./instances/PythonLibrary/parcellationEntityVersion/*jsonld"))

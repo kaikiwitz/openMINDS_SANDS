@@ -1,6 +1,6 @@
 class MarsAtlas:
-    @staticmethod
-    def get_data():
+    @classmethod
+    def get_data(cls):
         # Brain Area Info for each version (can be the same) THIS NEEDS TO BE SAME LENGTH FOR ALL AREAS
         areas_children_c = ['caudalMedialVisualCortex', 'lateralVisualCortex', 'superiorVisualCortex', 'cuneus',
                             'rostralMedialVisualCortex', 'medialInferiorTemporalCortex', 'rostralInferiorTemporalCortex',
@@ -80,7 +80,7 @@ class MarsAtlas:
         areas_c = list(zip(areas_children_c, areas_1st_parent_c, areas_2nd_parent_c))
         areas_cs = list(zip(areas_children_cs, areas_1st_parent_cs, areas_2nd_parent_cs))
         # area for each version for BAVs and PE
-        areas_versions_hierachry = {"Mars-c": areas_c, "Mars-cs": areas_cs}
+        areas_versions_hierachry = {"Mars_c": areas_c, "Mars_cs": areas_cs}
 
         # atlas info
         mars_authors_unique = [{"auziasGuillaume": {"familyName": "Auzias", "givenName": "Guillaume",
@@ -96,8 +96,8 @@ class MarsAtlas:
                                {"bartolomeiFabrice": {"familyName": "Bartolomei", "givenName": "Fabrice",
                                                       "ORCID": None}}]
 
-        full_documentation = [{"Mars-c": "https://doi.org/10.1002/hbm.23121"},
-                              {"Mars-cs": "https://doi.org/10.1523/JNEUROSCI.1672-16.2016"}]
+        full_documentation = [{"Mars_c": "https://doi.org/10.1002/hbm.23121"},
+                              {"Mars_cs": "https://doi.org/10.1523/JNEUROSCI.1672-16.2016"}]
         main_documentation = "https://doi.org/10.1002/hbm.23121"
         description = "MarsAtlas is a model of cortical parcellation. It can be applied to any cortical surface via the " \
                       "HipHop parameterization pipeline, available in the BrainVisa Cortical Surface Toolbox, under the Anatomy category."
@@ -108,31 +108,31 @@ class MarsAtlas:
 
         # Data Structures for all VERSIONS (BAVs, PEVs)
         # version info
-        versions = [{"Mars-c": {"reference_space": "Mars_HipHop138",
+        versions = [{"Mars_c": {"reference_space": "Mars_HipHop138",
                                 "accessibility": "freeAccess", "atlasType": "parcellationScheme",
                                 "version_identifier": "Mars Cortex, Mars_HipHop138 template",
                                 "version_innovation": "Mars Cortex Atlas",
-                                "release_date": "2016-01-27", "short_name": "Mars-c",
+                                "release_date": "2016-01-27", "short_name": "Mars_c",
                                 "homepage": "https://meca-brain.org/software/marsatlas/",
                                 "license": "cEcILL-B", "digitalIdentifier": "https://doi.org/10.1002/hbm.23121",
                                 "full_doc_name": "Mars_cortex",
                                 "authors": ["auziasGuillaume", "brovelliAndrea", "coulonOlivier"],
-                                "altVersion": ["Mars-cs"],
+                                "altVersion": ["Mars_cs"],
                                 "criteriaQualityType": ["processive"],
                                 "annotationCriteriaType": ["deterministicAnnotation"],
                                 "laterality": ["left", "right"], "annotationType": "annotationSurface"}},
-                    {"Mars-cs": {"reference_space": "Colin27_1998",
+                    {"Mars_cs": {"reference_space": "Colin27_1998",
                                  "accessibility": "freeAccess", "atlasType": "parcellationScheme",
                                  "version_identifier": "Mars Cortex + Subcortex, Colin27",
                                  "version_innovation": "Mars Cortex + Subcortex Atlas",
-                                 "release_date": "2017-01-25", "short_name": "Mars-cs",
+                                 "release_date": "2017-01-25", "short_name": "Mars_cs",
                                  "homepage": "https://meca-brain.org/software/marsatlas-subcortical/",
                                  "license": "cEcILL-B",
                                  "digitalIdentifier": "https://doi.org/10.1523/JNEUROSCI.1672-16.2016",
                                  "full_doc_name": "Mars_cortexAndSubcortex",
                                  "authors": ["brovelliAndrea", "badierJeanmichael", "boniniFrancesca", "bartolomeiFabrice",
                                              "coulonOlivier", "auziasGuillaume"],
-                                 "altVersion": ["Mars-c"], "newVersion": [], "criteriaQualityType": ["processive"],
+                                 "altVersion": ["Mars_c"], "newVersion": [], "criteriaQualityType": ["processive"],
                                  "annotationCriteriaType": ["deterministicAnnotation"],
                                  "laterality": ["left", "right"], "annotationType": "annotationSurface"}},
                     ]
@@ -153,7 +153,85 @@ class MarsAtlas:
         return (mars_authors_unique, main_documentation, description, abbreviation, fullName,
                 shortName, homepage, versions, areas_versions_hierachry, areas_unique, parents_unique)
 
+class DKTAtlas:
+    @classmethod
+    def get_data(cls):
+        # Brain Area Info for each version (can be the same) THIS NEEDS TO BE SAME LENGTH FOR ALL AREAS
+        areas_children = ['caudalAnteriorCingulate', 'caudalMiddleFrontal', 'cuneus', 'entorhinal', 'fusiform',
+                          'inferiorParietal', 'inferiorTemporal', 'isthmusCingulate', 'lateralOccipital',
+                          'lateralOrbitofrontal', 'lingual', 'medialOrbitofrontal', 'middleTemporal', 'parahippocampal',
+                          'paracentral', 'parsOpercularis', 'parsOrbitalis', 'parsTriangularis', 'pericalcarine',
+                          'postcentral', 'posteriorCingulate', 'precentral', 'precuneus', 'rostralAnteriorCingulate',
+                          'rostralMiddleFrontal', 'superiorFrontal', 'superiorParietal', 'superiorTemporal',
+                          'supramarginal', 'transverseTemporal', 'insula']
+        areas_1st_parent = ['cingulateCortex', 'frontalLobe', 'occipitalLobe', 'medialTemporalLobe', 'medialTemporalLobe',
+                            'parietalLobe', 'lateralTemporalLobe', 'cingulateCortex', 'occipitalLobe', 'frontalLobe',
+                            'occipitalLobe', 'frontalLobe', 'lateralTemporalLobe', 'medialTemporalLobe', 'frontalLobe',
+                            "frontalLobe", 'frontalLobe', 'frontalLobe', 'occipitalLobe', 'parietalLobe', 'cingulateCortex',
+                            "frontalLobe", 'parietalLobe', 'cingulateCortex', 'frontalLobe', 'frontalLobe', 'parietalLobe',
+                            'lateralTemporalLobe', 'parietalLobe', 'lateralTemporalLobe', None]
+        # areas = {outer_key: {outer_value: areas_2ndParent[0]} for outer_key, outer_value in areas_parent_matched.items()}
+        areas_2nd_parent = ['brain', 'brain', 'brain', 'brain', 'brain', 'brain', 'brain', 'brain', 'brain', 'brain',
+                            'brain', 'brain', 'brain', 'brain', 'brain', 'brain', 'brain', 'brain', 'brain', 'brain',
+                            "brain", 'brain', 'brain', 'brain', 'brain', 'brain', 'brain', 'brain', 'brain', 'brain', None]
 
-# if __name__ == '__main__':
-#     authors_unique, main_documentation, description, abbreviation, fullName, shortName, \
-#         homepage, versions, areas_versions_hierachry, areas_unique, parents_unique = MarsAtlas.get_data()
+        # zip list to store as tuples
+        areas = list(zip(areas_children, areas_1st_parent, areas_2nd_parent))
+
+        # atlas info
+        DKT_authors = [{"kleinArno" : {"familyName" : "Klein", "givenName" : "Arno", "ORCID" : "https://orcid.org/0000-0002-0414-5691"}},
+                       {"tourvilleJason" : {"familyName" : "Tourville", "givenName" : "Jason", "ORCID" : "https://orcid.org/0000-0002-7197-2427"}}]
+
+        full_documentation =  [{"DKT": "https://doi.org/10.3389/fnins.2012.00171"}]
+        main_documentation = "https://doi.org/10.3389/fnins.2012.00171"
+        description = "Mindboggle-101 surface and volume brain atlases (anatomical labels from a population of brains)."
+        abbreviation = "DKTA"
+        fullName = "Desikan-Killiany-Tourville Atlas"
+        shortName = "DKT Atlas"
+        homepage = "https://osf.io/kgdey/wiki/home/"
+
+        # Data Structures for all VERSIONS (BAVs, PEVs)
+        # version info
+        versions = [{"DKTA_p101-MNI152": {"reference_space": "MNI_ICBM_152_2009c_nonlin_asym",
+                                          "accessibility": "freeAccess", "atlasType": "parcellationScheme", "version_identifier": "101 participants, MNI",
+                                          "version_innovation": "Joint fusion volume atlas version of the DKT atlas",
+                                          "release_date": "2016-07-11", "short_name": "DKT Atlas", "homepage": "https://osf.io/kgdey/",
+                                          "license": "ccByNcNd3.0", "digitalIdentifier": "https://doi.org/10.3389/fnins.2012.00171",
+                                          "full_doc_name": "DKTA_p101-MNI152", "authors": ["kleinArno", "tourvilleJason"], "altVersion": ["DKTA_p101-fsaverage"],
+                                          "criteriaQualityType": ["asserted"], "annotationCriteriaType": ["deterministicAnnotation", "probabalisticAnnotation"],
+                                          "laterality": ["left", "right"], "annotationType": "annotationMask"}},
+                    {"DKTA_p101-fsaverage": {"reference_space" : "fsaverage-5",
+                                                 "accessibility": "freeAccess", "atlasType": "parcellationScheme", "version_identifier": "101 participants, fsaverage",
+                                                 "version_innovation": "Cortical surface atlas version of the DKT atlas derived from 101 participants",
+                                                 "release_date": "2016-07-11", "short_name": "DKT Atlas", "homepage": "https://osf.io/kgdey/",
+                                                 "license":"ccByNcNd3.0", "digitalIdentifier": "https://doi.org/10.3389/fnins.2012.00171",
+                                                 "full_doc_name": "DKTA_p101-fsaverage", "authors": ["kleinArno", "tourvilleJason"], "altVersion": ["DKTA_p101-MNI152"], "newVersion": ["DKTA_p40-fsaverage"],
+                                                 "criteriaQualityType": ["asserted"], "annotationCriteriaType": ["deterministicAnnotation"],
+                                                 "laterality": ["left", "right"], "annotationType": "annotationSurface"}},
+                    {"DKTA_p40-fsaverage": {"reference_space": "fsaverage-5",
+                                                "accessibility": "freeAccess", "atlasType": "parcellationScheme", "version_identifier": "40 participants, fsaverage",
+                                                "version_innovation": "Cortical surface atlas version of the DKT atlas from 40 participants",
+                                                "release_date": "2016-07-11", "short_name": "DKT Atlas", "homepage": "https://osf.io/kgdey/",
+                                                "license": "ccByNcNd3.0", "digitalIdentifier": "https://doi.org/10.3389/fnins.2012.00171",
+                                                "full_doc_name": "DKTA_p40-fsaverage", "authors": ["kleinArno", "tourvilleJason"],
+                                                "criteriaQualityType": ["asserted"], "annotationCriteriaType": ["deterministicAnnotation"],
+                                                "laterality": ["left", "right"], "annotationType": "annotationSurface"}}
+                    ]
+
+        # area for each version for BAVs and PE
+        areas_versions_hierachry = {"DKTA_p101-MNI152": areas, "DKTA_p101-fsaverage": areas, "DKTA_p40-fsaverage": areas}
+
+        # unique areas for BA
+        areas_unique = set()
+        for value_list in areas_versions_hierachry.values():
+            for tuple_value in value_list:
+                first_entry = tuple_value[0]
+                areas_unique.add(first_entry)
+
+        # unique parents
+        parents_unique = set()
+        for value_list in areas_versions_hierachry.values():
+            for tuple_value in value_list:
+                parents_unique.update(tuple_value[1:])
+
+        return (DKT_authors, main_documentation, description, abbreviation, fullName, shortName, homepage, versions, areas_versions_hierachry, areas_unique, parents_unique)

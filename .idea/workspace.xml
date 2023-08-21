@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56f4f992-f492-4202-9599-d35442bfa253" name="Changes" comment="Classes finished">
-      <change afterPath="$PROJECT_DIR$/helper_code/Atlas_data.py" afterDir="false" />
+    <list default="true" id="56f4f992-f492-4202-9599-d35442bfa253" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper_code/Atlas_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/Atlas_gen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper_code/Atlas_gen_new.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/Atlas_gen_new.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper_code/MarsAtlas_generation.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/MarsAtlas_generation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper_code/Mars_data_structures.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper_code/class_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/class_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper_code/Atlas.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/Atlas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper_code/AtlasVersion.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/AtlasVersion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper_code/Atlas_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/Atlas_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper_code/SANDS_Atlas_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/SANDS_Atlas_gen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
