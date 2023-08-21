@@ -1,5 +1,5 @@
 import os.path
-import Mars_data_structures
+import Atlas_data
 from Atlas import AtlasGen
 from AtlasVersion import AtlasVersionGen
 from ParcellationEntity import ParcellationEntityGen

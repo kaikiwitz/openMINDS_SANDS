@@ -10,7 +10,7 @@ class AutoInitializeAndCall:
     def call_methods(self, *methods_and_args):
         for method_and_arg in methods_and_args:
             method, arg = method_and_arg
-            method(arg)  # Call the method
+            method(arg)
 
 
 def replace_empty_lists(obj):

@@ -2,7 +2,7 @@ import os.path
 import glob
 import openMINDS.version_manager
 import json
-import Mars_data_structures
+import Atlas_data
 
 
 def generate_orcids(path, *args):
