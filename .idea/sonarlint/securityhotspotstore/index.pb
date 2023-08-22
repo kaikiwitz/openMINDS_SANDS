@@ -1,12 +1,8 @@
 
-^
-.helper_code/MarsAtlas_generation_methods.pa.py,9/5/9523971a33d1e148a506881ffb74e870c2097bc9
 S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e
-U
-%instances/atlas/brainAtlas/DKA.jsonld,8/4/84796173248a5aaedcd170551117dec1432fe436
 Z
 *instances/atlas/brainAtlas/BA-human.jsonld,b/c/bcd6212d07c1666912f669c86a97ef4eac20b029
 y
@@ -15,8 +11,6 @@ q
 Ainstances/atlas/parcellationEntity/DKA/DKA_cingulateCortex.jsonld,a/c/ac1174673f0b4334493015e2044b36117e064504
 V
 &instances/atlas/brainAtlas/SWMA.jsonld,f/c/fcc2352458777066a7728d7e45f567cdab8f7807
-V
-&instances/atlas/brainAtlas/DWMA.jsonld,0/9/092d53df109de3c11804ecfa97a0e0b1db167c28
 [
 +instances/atlas/brainAtlas/AsegAtlas.jsonld,b/9/b90bf019d3779b842bdfed1a7ff58ca0cb0d7073
 _

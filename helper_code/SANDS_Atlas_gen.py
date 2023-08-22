@@ -1,29 +1,61 @@
 import os.path
 from Atlas_data import MarsAtlas, DKTAtlas
 from class_utils import AutoInitializeAndCall
+from Persons import PersonGen
+from DOIs import DOIGen
+from ORCIDs import ORCIDGen
 from Atlas import AtlasGen
 from AtlasVersion import AtlasVersionGen
 from ParcellationEntity import ParcellationEntityGen
 from ParcellationEntityVersion import ParcellationEntityVersionGen
 
 
-def main(BA_path, BAV_path, PE_path, PEV_path):
+def main(BA_path, PERSON_path, DOI_path, ORCID_path, BAV_path, PE_path, PEV_path):
     atlases = [MarsAtlas, DKTAtlas]
     for atlas in atlases:
         # get Mars Atlas data
         data_atlas = atlas()
         authors, documentation, description, abbreviation, fullname, shortname, \
             homepage, versions, areas_versions_hierachry, areas_unique, parents_unique = data_atlas.get_data()
+        instantiation_persons(PERSON_path, authors, abbreviation)
+        instantiation_dois(DOI_path, documentation, abbreviation)
+        instantiation_orcids(ORCID_path, authors, abbreviation)
         instantiation_BA(BA_path, authors, versions, description, shortname, fullname, homepage, documentation,
-                         abbreviation, areas_unique, parents_unique)
+                         # abbreviation, areas_unique, parents_unique)
         instantiation_PE(PE_path, abbreviation, areas_versions_hierachry, areas_unique, parents_unique)
         instantiation_BAV(BAV_path, versions, areas_versions_hierachry)
         instantiation_PEV(PEV_path, abbreviation, versions, areas_versions_hierachry)
 
 
+def instantiation_persons(path, authors, abbreviation):
+    print(f"Creating openMINDS-SANDS compatible Atlas Instance for {abbreviation}...")
+    os.makedirs(path, exist_ok=True)
+    Persons = PersonGen(path, authors)
+    Person_handler = AutoInitializeAndCall(Persons)
+    Person_handler.call_methods((Persons.generate_instances, Persons))
+    print(f"...Persons Instances for {abbreviation} created")
+
+
+def instantiation_dois(path, documentation, abbreviation):
+    print(f"Creating openMINDS-SANDS compatible DOIs for {abbreviation}...")
+    os.makedirs(path, exist_ok=True)
+    DOIs = DOIGen(path, documentation, abbreviation)
+    DOI_handler = AutoInitializeAndCall(DOIs)
+    DOI_handler.call_methods((DOIs.generate_instances, DOIs))
+    print(f"...DOI Instances for {abbreviation} created")
+
+
+def instantiation_orcids(path, authors, abbreviation):
+    print(f"Creating openMINDS-SANDS compatible ORCIDs for {abbreviation}...")
+    os.makedirs(path, exist_ok=True)
+    ORCIDs = ORCIDGen(path, authors, abbreviation)
+    ORCID_handler = AutoInitializeAndCall(ORCIDs)
+    ORCID_handler.call_methods((ORCIDs.generate_instances, ORCIDs))
+    print(f"...ORCID Instances for {abbreviation} created")
+
+
 def instantiation_BA(path, authors, versions, description, shortname, fullname, homepage, documentation,
                      abbreviation, areas, parents):
-    # global Atlas
     print(f"Creating openMINDS-SANDS compatible Atlas Instance for {abbreviation}...")
     path = f"{path}{fullname}.jsonld"
     Atlas = AtlasGen(path, authors, versions, description, shortname, fullname, homepage, documentation,
@@ -34,7 +66,6 @@ def instantiation_BA(path, authors, versions, description, shortname, fullname, 
 
 
 def instantiation_PE(path, abbreviation, areas_hierachry, areas, parents):
-    # global Parcellations
     path = f"{path}{abbreviation}/"
     os.mkdir(path)
     print(f"Creating openMINDS-SANDS compatible Parcellation Entitiy Instances for {abbreviation}...")
@@ -43,9 +74,8 @@ def instantiation_PE(path, abbreviation, areas_hierachry, areas, parents):
     Parcellations_handler.call_methods((Parcellations.generate_instances, Parcellations))
     print(f"...Parcellation Entities for {abbreviation} created")
 
+
 def instantiation_BAV(path, versions, areas_hierachry):
-    # global version, AtlasVersion
-    # global AtlasVersion
     for dic in versions:
         for version in dic.keys():
             print(f"Creating openMINDS-SANDS compatible Brain Atlas Version Instance for {version}...")
@@ -56,7 +86,6 @@ def instantiation_BAV(path, versions, areas_hierachry):
 
 
 def instantiation_PEV(path, abbreviation, versions, areas_hierachry):
-    # global version, ParcellationEntityVersion
     for dic in versions:
         for version in dic.keys():
             pev_path = f"{path}{version}/"
@@ -71,11 +100,13 @@ def instantiation_PEV(path, abbreviation, versions, areas_hierachry):
 
 
 if __name__ == "__main__":
-
-    # atlas paths
+    # paths
     atlas_path = "/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/atlas/brainAtlas/"
+    person_dir = "/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/person/"
+    doi_dir = "/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/digitalIdentifier/DOI/"
+    orcid_dir = "/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/digitalIdentifier/ORCID/"
     version_path = "/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/atlas/brainAtlasVersion/"
     entity_path = "/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/atlas/parcellationEntity/"
     entity_ver_path = "/home/kiwitz1/PycharmProjects/openMINDS_SANDS/instances/atlas/parcellationEntityVersion/"
     # function call
-    main(atlas_path, version_path, entity_path, entity_ver_path)
+    main(atlas_path, person_dir, doi_dir, orcid_dir, version_path, entity_path, entity_ver_path)
