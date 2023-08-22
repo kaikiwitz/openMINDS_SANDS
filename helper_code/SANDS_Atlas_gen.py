@@ -21,7 +21,7 @@ def main(BA_path, PERSON_path, DOI_path, ORCID_path, BAV_path, PE_path, PEV_path
         instantiation_dois(DOI_path, documentation, abbreviation)
         instantiation_orcids(ORCID_path, authors, abbreviation)
         instantiation_BA(BA_path, authors, versions, description, shortname, fullname, homepage, documentation,
-                         # abbreviation, areas_unique, parents_unique)
+                         abbreviation, areas_unique, parents_unique)
         instantiation_PE(PE_path, abbreviation, areas_versions_hierachry, areas_unique, parents_unique)
         instantiation_BAV(BAV_path, versions, areas_versions_hierachry)
         instantiation_PEV(PEV_path, abbreviation, versions, areas_versions_hierachry)

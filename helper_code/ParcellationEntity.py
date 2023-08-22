@@ -72,6 +72,21 @@ class ParcellationEntityGen:
             # create openMINDS instances
             cls.generate_openminds_instances(instance, area)
 
+        for area in instance.parents:
+            versions = cls.version_extraction_PE(area, instance.hierarchy, parent_versions=False)
+            parents = cls.parent_extraction_PE(area, instance)
+
+            # create entity isntance
+            entity = cls.basic.add_SANDS_parcellationEntity(name=area)
+            cls.basic.get(entity).lookupLabel = f"{instance.abb}_{area}"
+            # add entity version creation
+            cls.basic.get(entity).hasVersion = versions
+            # add parent structures
+            cls.basic.get(entity).hasParent = parents
+            cls.basic.save("./instances/PythonLibrary/")
+            # create openMINDS instances
+            cls.generate_openminds_instances(instance, area)
+
     def generate_openminds_instances(self, area):
         latest = max(glob.glob("./instances/PythonLibrary/parcellationEntity/*jsonld"))
         with open(latest, 'r') as f:

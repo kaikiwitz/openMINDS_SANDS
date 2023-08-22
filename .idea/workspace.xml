@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56f4f992-f492-4202-9599-d35442bfa253" name="Changes" comment="Classes finished">
+      <change afterPath="$PROJECT_DIR$/helper_code/DOIs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/helper_code/ORCIDs.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/helper_code/Persons.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
@@ -12,6 +14,7 @@
       <change beforePath="$PROJECT_DIR$/helper_code/ParcellationEntity.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/ParcellationEntity.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helper_code/ParcellationEntityVersion.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/ParcellationEntityVersion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helper_code/SANDS_Atlas_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper_code/SANDS_Atlas_gen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instances/atlas/brainAtlas/DKA.jsonld" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

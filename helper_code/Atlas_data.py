@@ -186,7 +186,7 @@ class DKTAtlas:
         main_documentation = "https://doi.org/10.3389/fnins.2012.00171"
         description = "Mindboggle-101 surface and volume brain atlases (anatomical labels from a population of brains)."
         abbreviation = "DKTA"
-        fullName = "Desikan-Killiany-Tourville Atlas"
+        fullName = "Desikan-Killiany-Tourville-Atlas"
         shortName = "DKT Atlas"
         homepage = "https://osf.io/kgdey/wiki/home/"
 
