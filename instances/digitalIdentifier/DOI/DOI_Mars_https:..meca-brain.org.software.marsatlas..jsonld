@@ -1,0 +1,8 @@
+{
+  "@context": {
+    "@vocab": "https://openminds.ebrains.eu/vocab/"
+  },
+  "@id": "https://openminds.ebrains.eu/instances/DOI/DOI_Mars_https:..meca-brain.org.software.marsatlas.",
+  "@type": "https://openminds.ebrains.eu/core/DOI",
+  "identifier": "https://meca-brain.org/software/marsatlas/"
+}
